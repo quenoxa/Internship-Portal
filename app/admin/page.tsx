@@ -1,5 +1,4 @@
-import { Applicant } from "@/models/Applicant";
-import connectToDatabase from "@/lib/mongodb";
+import { fetchFromGoogleSheet } from "@/src/services/googleSheetApi";
 import {
   Table,
   TableBody,
@@ -13,12 +12,13 @@ import { Badge } from "@/components/ui/badge";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  await connectToDatabase();
-
   // Fetch applicants
   let applicants: any[] = [];
   try {
-    applicants = await Applicant.find().sort({ appliedAt: -1 }).lean();
+    const result = await fetchFromGoogleSheet();
+    if (result.success) {
+      applicants = result.data.reverse();
+    }
   } catch (e) {
     console.error(e);
   }
@@ -47,20 +47,18 @@ export default async function AdminDashboard() {
                 </TableCell>
               </TableRow>
             ) : (
-              applicants.map((app: any) => (
-                <TableRow key={app._id.toString()}>
-                  <TableCell className="font-medium">{app.name}<br /><span className="text-xs text-zinc-500">{app.email}</span></TableCell>
-                  <TableCell>{app.domain}</TableCell>
-                  <TableCell>{app.college}</TableCell>
+              applicants.map((app: any, idx: number) => (
+                <TableRow key={`${app.Email || idx}-${idx}`}>
+                  <TableCell className="font-medium">{app.Name || app.name}<br /><span className="text-xs text-zinc-500">{app.Email || app.email}</span></TableCell>
+                  <TableCell>{app.Domain || app.domain}</TableCell>
+                  <TableCell>{app.College || app.college}</TableCell>
                   <TableCell>
-                    <Badge variant={app.status === 'Selected' ? 'default' : 'secondary'}>
-                      {app.status}
-                    </Badge>
+                    <Badge variant="secondary">Applied</Badge>
                   </TableCell>
-                  <TableCell>{new Date(app.appliedAt).toLocaleDateString()}</TableCell>
+                  <TableCell>{app.Timestamp ? new Date(app.Timestamp).toLocaleDateString() : 'N/A'}</TableCell>
                   <TableCell className="space-x-2">
-                    {app.linkedin && <a href={app.linkedin} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">LinkedIn</a>}
-                    {app.github && <a href={app.github} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">GitHub</a>}
+                    {(app.LinkedIn || app.linkedin) && <a href={app.LinkedIn || app.linkedin} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">LinkedIn</a>}
+                    {(app.GitHub || app.github) && <a href={app.GitHub || app.github} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">GitHub</a>}
                   </TableCell>
                 </TableRow>
               ))
