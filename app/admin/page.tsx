@@ -14,9 +14,9 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
   await connectToDatabase();
-  
+
   // Fetch applicants
-  let applicants = [];
+  let applicants: any[] = [];
   try {
     applicants = await Applicant.find().sort({ appliedAt: -1 }).lean();
   } catch (e) {
@@ -49,7 +49,7 @@ export default async function AdminDashboard() {
             ) : (
               applicants.map((app: any) => (
                 <TableRow key={app._id.toString()}>
-                  <TableCell className="font-medium">{app.name}<br/><span className="text-xs text-zinc-500">{app.email}</span></TableCell>
+                  <TableCell className="font-medium">{app.name}<br /><span className="text-xs text-zinc-500">{app.email}</span></TableCell>
                   <TableCell>{app.domain}</TableCell>
                   <TableCell>{app.college}</TableCell>
                   <TableCell>
