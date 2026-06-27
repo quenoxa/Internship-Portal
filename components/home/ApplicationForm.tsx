@@ -56,12 +56,21 @@ const formSchema = z.object({
   college: z.string().min(2, { message: "✏ College required" }),
   portfolio: z.string().optional(),
   department: z.string().min(2, { message: "✏ Department required" }),
+  otherDepartment: z.string().optional(),
   domain: z.string().min(1, { message: "✏ Domain required" }),
   year: z.string().min(1, { message: "✏ Year required" }),
   email: z.string().email({ message: "✏ Valid email required" }),
   phone: z.string().min(10, { message: "✏ Phone required" }),
   reason: z.string().max(500, { message: "✏ Keep it under 500 characters" }).min(10, { message: "✏ Tell us a bit more" }),
   resumeUrl: z.string().min(1, { message: "✏ Resume is required" }),
+}).superRefine((data, ctx) => {
+  if (data.department === "Other" && (!data.otherDepartment || data.otherDepartment.length < 2)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "✏ Please specify your department",
+      path: ["otherDepartment"],
+    });
+  }
 });
 
 export function ApplicationForm({ onProgressChange, progress }: { onProgressChange: (progress: number) => void, progress: number }) {
@@ -74,7 +83,7 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "", linkedin: "", college: "", portfolio: "", department: "", 
+      name: "", linkedin: "", college: "", portfolio: "", department: "", otherDepartment: "",
       domain: "", year: "", email: "", phone: "", reason: "", resumeUrl: ""
     },
     mode: "onChange"
@@ -113,7 +122,7 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
         email: values.email,
         phone: values.phone,
         collegeName: values.college,
-        department: values.department,
+        department: values.department === "Other" ? (values.otherDepartment || "Other") : values.department,
         year: values.year,
         preferredDomain: values.domain,
         linkedin: values.linkedin,
@@ -327,6 +336,26 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
                   </FormItem>
                 )}
               />
+
+              {form.watch("department") === "Other" && (
+                <FormField
+                  control={form.control}
+                  name="otherDepartment"
+                  render={({ field }) => (
+                    <FormItem className="col-span-1 md:col-span-2">
+                      <FormLabel className="font-bold text-sm text-brand-black mb-2 block">Specify Department <span className="text-red-500">*</span></FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Type your department name" 
+                          {...field} 
+                          className="border-2 border-zinc-300 rounded-md bg-white shadow-sm focus-visible:ring-[#6DFF33] h-12 font-sans"
+                        />
+                      </FormControl>
+                      <FormMessage className="font-caveat text-brand-error" />
+                    </FormItem>
+                  )}
+                />
+              )}
 
               <FormField
                 control={form.control}
