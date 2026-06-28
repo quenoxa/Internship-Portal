@@ -5,7 +5,8 @@ import { HeroLeftPage } from "@/components/home/HeroLeftPage";
 import { ApplicationForm } from "@/components/home/ApplicationForm";
 import { SmartProfile } from "@/components/home/SmartProfile";
 import { WhyIntern } from "@/components/home/WhyIntern";
-import { SpiralBinding } from "@/components/ui/Doodles";
+import { SpiralBinding, CoffeeCup, LaptopSketch, GraduationCap, StarGroup } from "@/components/ui/Doodles";
+import { PageDecorations } from "@/components/ui/PageDecorations";
 import { useState } from "react";
 import { HelpCard, CareerCard } from "@/components/home/SidebarCards";
 
@@ -26,6 +27,21 @@ export default function Home() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col xl:flex-row w-full bg-[#F8F6F0] rounded-r-[30px] rounded-l-md shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative min-h-[1000px]"
         >
+          <PageDecorations />
+
+          {/* Random Doodles in empty margins */}
+          <div className="absolute bottom-8 left-[35%] opacity-40 z-0 pointer-events-none transform -rotate-12">
+            <CoffeeCup className="w-16 h-16 text-brand-black" />
+          </div>
+          <div className="absolute top-12 left-[42%] opacity-30 z-0 pointer-events-none transform rotate-6">
+            <StarGroup className="w-12 h-12" />
+          </div>
+          <div className="absolute bottom-20 right-[22%] opacity-20 z-0 pointer-events-none transform rotate-12">
+            <LaptopSketch className="w-20 h-20 text-brand-black" />
+          </div>
+          <div className="absolute top-1/2 left-[48%] opacity-20 z-0 pointer-events-none transform -rotate-6">
+            <GraduationCap className="w-14 h-14 text-brand-black" />
+          </div>
           {/* FAR LEFT Spiral Binding */}
           <div className="hidden xl:block">
             <SpiralBinding />

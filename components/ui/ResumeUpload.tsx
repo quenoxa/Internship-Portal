@@ -222,26 +222,26 @@ export function ResumeUpload({ value, onChange, error }: ResumeUploadProps) {
             </div>
           </div>
           
-          <div className="flex items-center gap-4 pt-3 border-t border-zinc-100 mt-1">
+          <div className="flex items-center justify-between pt-3 pb-1 border-t border-zinc-100 mt-1 flex-wrap gap-x-2 gap-y-2">
             <a 
               href={fileDetails.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-bold text-zinc-600 hover:text-brand-black transition-colors"
+              className="flex items-center gap-1 text-xs font-bold text-zinc-600 hover:text-brand-black transition-colors"
             >
               <Eye size={14} /> Preview
             </a>
             <button 
               type="button"
               onClick={handleReplace}
-              className="flex items-center gap-1.5 text-xs font-bold text-zinc-600 hover:text-brand-black transition-colors"
+              className="flex items-center gap-1 text-xs font-bold text-zinc-600 hover:text-brand-black transition-colors"
             >
               <RefreshCw size={14} /> Replace
             </button>
             <button 
               type="button"
               onClick={handleRemove}
-              className="flex items-center gap-1.5 text-xs font-bold text-red-500 hover:text-red-600 transition-colors ml-auto"
+              className="flex items-center gap-1 text-xs font-bold text-red-500 hover:text-red-600 transition-colors"
             >
               <Trash2 size={14} /> Remove
             </button>

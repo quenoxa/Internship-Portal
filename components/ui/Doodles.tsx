@@ -100,3 +100,83 @@ export const SpiralBinding = () => {
     </div>
   );
 };
+
+export const CoffeeCup = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M20 30 C 20 80, 80 80, 80 30 Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M80 40 C 95 40, 95 60, 80 60" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M40 20 Q 45 10, 50 20 T 60 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const GraduationCap = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M10 40 L50 20 L90 40 L50 60 Z" fill="white" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+    <path d="M30 50 L30 70 Q 50 85, 70 70 L70 50" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    <path d="M90 40 L90 70" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    <circle cx="90" cy="75" r="3" fill="currentColor" />
+  </svg>
+);
+
+export const LaptopSketch = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <rect x="20" y="20" width="60" height="40" rx="3" fill="white" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+    <path d="M10 65 L90 65 L85 75 L15 75 Z" fill="white" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+    <circle cx="50" cy="40" r="4" fill="currentColor" />
+  </svg>
+);
+
+export const LightningBolt = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M60 10 L20 60 L50 60 L40 90 L80 40 L50 40 Z" fill="#7CFF00" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+  </svg>
+);
+
+export const CodingSymbols = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M30 20 L10 50 L30 80 M70 20 L90 50 L70 80" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M60 15 L40 85" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+  </svg>
+);
+
+export const Braces = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M40 10 C 20 10, 20 30, 20 45 C 20 50, 10 50, 10 50 C 20 50, 20 50, 20 55 C 20 70, 20 90, 40 90" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M60 10 C 80 10, 80 30, 80 45 C 80 50, 90 50, 90 50 C 80 50, 80 50, 80 55 C 80 70, 80 90, 60 90" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const AIChip = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <rect x="30" y="30" width="40" height="40" rx="4" fill="white" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+    <path d="M30 45 H15 M30 55 H15 M70 45 H85 M70 55 H85 M45 30 V15 M55 30 V15 M45 70 V85 M55 70 V85" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    <circle cx="50" cy="50" r="6" fill="#7CFF00" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+export const LocationPin = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M50 90 C 50 90, 15 55, 15 35 C 15 15, 30 10, 50 10 C 70 10, 85 15, 85 35 C 85 55, 50 90, 50 90 Z" fill="white" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+    <circle cx="50" cy="35" r="10" stroke="currentColor" strokeWidth="3" />
+  </svg>
+);
+
+export const PaperClip = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M30 65 L 30 30 C 30 15, 50 15, 50 30 L 50 75 C 50 95, 80 95, 80 75 L 80 20" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const StarGroup = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <path d="M50 10 L55 35 L80 40 L55 45 L50 70 L45 45 L20 40 L45 35 Z" fill="#7CFF00" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    <path d="M20 70 L22 80 L32 82 L22 84 L20 94 L18 84 L8 82 L18 80 Z" fill="white" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    <path d="M80 15 L82 22 L89 24 L82 26 L80 33 L78 26 L71 24 L78 22 Z" fill="white" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+  </svg>
+);
+
+export const TextDoodle = ({ text, className }: { text: string; className?: string }) => (
+  <div className={`font-caveat font-bold text-brand-black rotate-[-5deg] ${className}`}>
+    {text}
+  </div>
+);

@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { UploadCloud, Loader2 } from "lucide-react";
-import { PaperAirplane, ScribbleUnderline, BrushStrokeButton, PencilDoodle } from "@/components/ui/Doodles";
+import { PaperAirplane, ScribbleUnderline, BrushStrokeButton, PencilDoodle, TextDoodle, PaperClip, CodingSymbols } from "@/components/ui/Doodles";
 import { ResumeUpload } from "@/components/ui/ResumeUpload";
 
 const domains = [
@@ -227,6 +227,13 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
             <PaperAirplane className="w-8 h-8 text-zinc-500 transform -rotate-12" />
           </h2>
           <ScribbleUnderline className="absolute -bottom-2 left-0 w-[60%] text-[#6DFF33]" />
+          
+          <div className="absolute -top-6 -right-16 opacity-30 z-0 pointer-events-none transform rotate-12 hidden sm:block">
+            <TextDoodle text="go!" className="text-2xl text-[#7CFF00]" />
+          </div>
+          <div className="absolute top-16 left-2 opacity-10 z-0 pointer-events-none transform -rotate-12 hidden md:block">
+            <CodingSymbols className="w-12 h-12 text-brand-black" />
+          </div>
         </div>
 
         <div className="flex flex-col items-end gap-1">
@@ -427,7 +434,7 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
                   <FormItem>
                     <FormLabel className="font-bold text-sm text-brand-black">Phone <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
-                      <Input placeholder="+91 98765 43210" className="border border-zinc-300 rounded-md bg-white shadow-sm focus-visible:ring-[#6DFF33] focus-visible:border-[#6DFF33] font-sans h-10" {...field} />
+                      <Input placeholder="Enter your phone number" className="border border-zinc-300 rounded-md bg-white shadow-sm focus-visible:ring-[#6DFF33] focus-visible:border-[#6DFF33] font-sans h-10" {...field} />
                     </FormControl>
                     <FormMessage className="font-caveat text-brand-error" />
                   </FormItem>
@@ -499,16 +506,17 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
           )}
 
           <div className="pt-10 flex flex-col items-center">
-            <Button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="w-full max-w-sm mx-auto md:w-auto group relative flex items-center justify-center gap-4 bg-[#2F2F2F] font-caveat text-3xl h-auto py-4 px-10 rounded-xl hover:-translate-y-1 transition-all duration-300 overflow-visible z-10 shadow-lg hover:shadow-xl disabled:opacity-75 disabled:hover:translate-y-0"
-            >
-              {/* Hand-drawn clean border layers */}
-              <div className="absolute inset-0 border-[1.5px] border-[#111111] rounded-xl rounded-tr-[14px] rounded-bl-[12px] rotate-[0.5deg] scale-[1.01] pointer-events-none opacity-40"></div>
-              <div className="absolute inset-0 border border-[#111111] rounded-xl rounded-tl-[10px] rounded-br-[10px] -rotate-[0.5deg] scale-[1.02] pointer-events-none opacity-30"></div>
-              
-              {/* Thin Neon Green Accent Highlight underneath */}
+            <div className="relative">
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full max-w-sm mx-auto md:w-auto group relative flex items-center justify-center gap-4 bg-[#2F2F2F] font-caveat text-3xl h-auto py-4 px-10 rounded-xl hover:-translate-y-1 transition-all duration-300 overflow-visible z-10 shadow-lg hover:shadow-xl disabled:opacity-75 disabled:hover:translate-y-0"
+              >
+                {/* Hand-drawn clean border layers */}
+                <div className="absolute inset-0 border-[1.5px] border-[#111111] rounded-xl rounded-tr-[14px] rounded-bl-[12px] rotate-[0.5deg] scale-[1.01] pointer-events-none opacity-40"></div>
+                <div className="absolute inset-0 border border-[#111111] rounded-xl rounded-tl-[10px] rounded-br-[10px] -rotate-[0.5deg] scale-[1.02] pointer-events-none opacity-30"></div>
+                
+                {/* Thin Neon Green Accent Highlight underneath */}
               <div 
                 className="absolute -bottom-1 -left-1 -right-1 h-3 bg-[#6DFF33] -z-10 rotate-[0.3deg] opacity-90 group-hover:-bottom-1.5 group-hover:opacity-100 group-hover:shadow-[0_4px_15px_rgba(109,255,51,0.4)] transition-all duration-300 rounded-sm" 
                 style={{ clipPath: 'polygon(1% 15%, 99% 5%, 98% 100%, 0% 90%)' }}
@@ -528,11 +536,50 @@ export function ApplicationForm({ onProgressChange, progress }: { onProgressChan
                   <path d="m12 5 7 7-7 7" />
                 </svg>
               )}
-            </Button>
+              </Button>
+              <div className="absolute -top-4 -right-16 opacity-40 z-0 pointer-events-none transform -rotate-[15deg]">
+                <TextDoodle text="ship it!" className="text-xl text-[#7CFF00]" />
+              </div>
+            </div>
             
             <p className="mt-6 text-sm font-sans text-brand-black">
               We'll review your application and get back to you within <span className="bg-[#E2F7C2] px-1 font-bold">24-48 hours</span>.
             </p>
+
+            {/* Video Illustration Section */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ y: -3, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)" }}
+              className="relative mt-16 w-full bg-[#Fdfdfb] rounded-[18px] shadow-lg border border-zinc-200 p-[24px] will-change-transform group"
+            >
+              {/* Paper Texture Overlay */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none rounded-[18px]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+              
+              {/* Punch Holes on the left edge */}
+              <div className="absolute left-3 top-0 bottom-0 flex flex-col justify-evenly py-6 pointer-events-none">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="w-[14px] h-[14px] rounded-full bg-[#2A2A2A] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5)]"></div>
+                ))}
+              </div>
+              
+              {/* Notebook Line Decoration */}
+              <div className="absolute left-10 top-0 bottom-0 w-[2px] bg-red-400/20 pointer-events-none" />
+
+              {/* Video Container */}
+              <div className="relative w-full h-full overflow-hidden rounded-[18px] pl-6 md:pl-8">
+                <video
+                   src="/uploads/Transform_this_blank_notebook (online-video-cutter.com).mp4"
+                   autoPlay
+                   muted
+                   loop
+                   playsInline
+                   preload="auto"
+                   className="w-full h-full object-contain rounded-[18px] will-change-transform shadow-sm bg-[#Fdfdfb]"
+                />
+              </div>
+            </motion.div>
           </div>
         </form>
       </Form>
